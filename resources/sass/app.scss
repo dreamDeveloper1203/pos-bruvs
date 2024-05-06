@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+// Variables
+@import "variables";
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-icons/font/bootstrap-icons";
+
+// Sweetalert2
+@import "~sweetalert2/dist/sweetalert2.min.css";
+
+@import "sidebar";
+@import "dropmenu";
+@import "swal2";
+
+.form-control:hover,
+.form-select:hover {
+    border-color: $black;
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: $primary !important;
+}
+.form-select {
+    cursor: pointer;
+}
+.form-control.is-invalid:focus {
+    border-color: $danger !important;
+    box-shadow: 0 0 0 0 rgb(217 48 37 / 25%);
+}
+.form-control.is-invalid:hover {
+    border-color: $danger !important;
+}
+.alert-warning {
+    background-color: #fef7e0 !important;
+}
+.alert-danger {
+    background-color: #fce8e6 !important;
+    color: $black !important;
+}
+
+.alert-success {
+    background-color: #ccf8e4 !important;
+    color: $black !important;
+}
+.btn-group-xs > .btn,
+.btn-xs {
+    padding: 1px 5px;
+    font-size: 11px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.object-fit-cover {
+    object-fit: cover !important;
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    height: 56px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: #dadce0;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #dadce0;
+}
+
+.form-label {
+    margin: 0 !important;
+    font-weight: 700 !important;
+}
+
+.cell-item-label {
+    background: hsla(0, 0%, 98%, 0.90);
+}
+
+.lh-inherit {
+    line-height: inherit;
+}
+.overflow-x-auto {
+    overflow-x: auto !important;
+}
+.overflow-y-auto {
+    overflow-y: auto !important;
+}
+.cursor-pointer {
+    cursor: pointer !important;
+}
+.cursor-not-allowed {
+    cursor: not-allowed !important;
+}
+.modal {
+    backdrop-filter: saturate(180%) blur(10px) !important;
+    background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.clicable-cell:hover {
+    cursor: pointer !important;
+    background-color: #efefef !important;
+}
+
+.card-gutter {
+    height: calc(100vh - 100px);
+}
+.text-danger-sec {
+    color: #ef6e25 !important;
+}
+.bg-primary-sec {
+    background-color: #323e72 !important;
+}

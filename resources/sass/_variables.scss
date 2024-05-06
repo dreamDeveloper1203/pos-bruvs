@@ -1,0 +1,42 @@
+$font-family-sans-serif: "Roboto", sans-serif;
+$min-contrast-ratio: 2.5;
+$primary: #6473f4;
+$secondary: #6c757d;
+$danger: #d93025;
+$success: #00b74a;
+$warning: #ffa900;
+$dark: #333333;
+$light: #f8f9fa;
+$white: #ffffff;
+$info: #e8f0fe;
+$black: #222222;
+$enable-shadows: true;
+$body-bg: $light;
+$body-color: $black;
+
+$border-radius: 0.25rem;
+$btn-padding-x: 1.5rem;
+$btn-box-shadow: 0;
+$btn-focus-box-shadow: 0;
+$input-bg: $white;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0;
+$form-select-focus-box-shadow: 0;
+$alert-bg-scale: 0;
+$alert-border-scale: -70%;
+$alert-color-scale: 0;
+$alert-border-width: 0;
+$text-muted: #757575;
+
+$breadcrumb-divider: url("/images/webp/right-arrow-24.webp");
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "danger": $danger,
+    "success": $success,
+    "warning": $warning,
+    "dark": $dark,
+    "light": $light,
+    "info": $info,
+);
