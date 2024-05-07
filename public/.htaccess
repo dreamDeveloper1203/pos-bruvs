@@ -1,6 +1,4 @@
-<IfModule mime_module>
-   AddHandler application/x-httpd-ea-php74___lsphp .php .php7 .phtml
-</IfModule>
+
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
