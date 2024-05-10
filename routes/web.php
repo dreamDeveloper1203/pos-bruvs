@@ -159,7 +159,5 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/order', [\App\Http\Controllers\OrderController::class, 'store']);
 
-
-
     Route::get('/uploads/{path}', [App\Http\Controllers\ImageController::class, 'show'])->where('path', '.*');
 });

@@ -2,7 +2,7 @@
 @push('style')
     <style>
         body {
-            background-image: url(https://the-bruvs.net/images/webp/hero_footer.webp)
+            background-image: url(https://the-bruvs.wmktech.net/images/webp/hero_footer.webp)
         }
     </style>
 @endpush
@@ -14,7 +14,7 @@
                 <div class="card w-100 rounded-4" style="background-color: rgba(255, 255, 255, .6)">
                     <div class="card-body p-4">
                         <div class="text-center">
-                            <img src="https://the-bruvs.net/images/webp/logo.webp" alt="the-bruvs">
+                            <img src="https://the-bruvs.wmktech.net/images/webp/logo.webp" alt="the-bruvs">
                         </div>
                         <h5 class="card-title mb-sm-3 text-center">Log in to the system</h5>
                         <form action="{{ route('login.attempt') }}" method="POST" role="form">

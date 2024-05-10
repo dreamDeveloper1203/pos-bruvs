@@ -96,13 +96,13 @@ class PointOfSale extends Component<Props, State> {
         }
     }
     getExchangeRate = (): void => {
-        httpService.get(`https://the-bruvs.net/api/v1/exchange-rate`)
+        httpService.get(`https://the-bruvs.wmktech.net/api/v1/exchange-rate`)
             .then((response: any) => {
                 this.setState({ exchangeRate: response.data.data });
             });
     }
     getCategories = (): void => {
-        httpService.get(`https://the-bruvs.net/api/v1/pos/categories/items?access_token=$2a$12$ouKUJlDrvBJDYAmUgpxFK.JcyXLj4Tq9Y1xPtX.nOm.I./Xyt.aOq`)
+        httpService.get(`https://the-bruvs.wmktech.net/api/v1/pos/categories/items?access_token=$2a$12$ouKUJlDrvBJDYAmUgpxFK.JcyXLj4Tq9Y1xPtX.nOm.I./Xyt.aOq`)
             .then((response: any) => {
                 this.setState({ categories: response.data.data });
             }).finally(() => {
@@ -413,8 +413,8 @@ class PointOfSale extends Component<Props, State> {
         printWindow.document.write('<div style="font-size: 1.50rem;">The Bruvs</div>');
         printWindow.document.write(`<div style="font-size: 0.875em;">Zahlé - Baalbek Hwy, Lebanon</div>`);
         printWindow.document.write(`<div style="font-size: 0.875em;">+961 70 615 556</div>`);
-        printWindow.document.write(`<div style="font-size: 0.875em;">info@the-bruvs.net</div>`);
-        printWindow.document.write(`<div style="font-size: 0.875em;">www.the-bruvs.net</div>`);
+        printWindow.document.write(`<div style="font-size: 0.875em;">info@the-bruvs.wmktech.net</div>`);
+        printWindow.document.write(`<div style="font-size: 0.875em;">www.the-bruvs.wmktech.net</div>`);
         printWindow.document.write(`</div>`);
 
         printWindow.document.write(`<div style="text-align: center !important;margin-bottom: 0.5rem !important;">Receipt № ${data.order_number}</div>`);

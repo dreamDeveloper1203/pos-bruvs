@@ -9,8 +9,8 @@
         <div style="font-size: 1.50rem;">The Bruvs</div>
         <div style="font-size: 0.875em;">Zahlé - Baalbek Hwy, Lebanon</div>
         <div style="font-size: 0.875em;">+961 70 615 556</div>
-        <div style="font-size: 0.875em;">info@the-bruvs.net</div>
-        <div style="font-size: 0.875em;">www.the-bruvs.net</div>
+        <div style="font-size: 0.875em;">info@the-bruvs.wmktech.net</div>
+        <div style="font-size: 0.875em;">www.the-bruvs.wmktech.net</div>
     </div>
 
     <div style="text-align: center !important;margin-bottom: 0.5rem !important;">Receipt № {{ $order->number }}</div>

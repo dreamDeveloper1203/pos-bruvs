@@ -68,7 +68,7 @@ class CustomerSeeder extends Seeder
             $orderDetails->quantity = $qty;
 
             $orderDetails->product_name = $faker->name();
-            $orderDetails->product_image_url = "https://the-bruvs.net/img/item-image/pAsymkgAACgcg3HW00CACXjgBU8QfSfUYNxuYi1p.jpg/6a5edd31841de1973902de3e6c3054ed175746bda852ee5feaa5cd453bdc9e71/pAsymkgAACgcg3HW00CACXjgBU8QfSfUYNxuYi1p.jpg?w=512&h=512&fit=crop";
+            $orderDetails->product_image_url = "https://pos-the-bruvs.wmktech.net/img/item-image/pAsymkgAACgcg3HW00CACXjgBU8QfSfUYNxuYi1p.jpg/6a5edd31841de1973902de3e6c3054ed175746bda852ee5feaa5cd453bdc9e71/pAsymkgAACgcg3HW00CACXjgBU8QfSfUYNxuYi1p.jpg?w=512&h=512&fit=crop";
             $salePrice = $faker->randomFloat(0, 15000, 250000);
             $orderDetails->price = $salePrice;
             $orderDetails->cost = $faker->randomFloat(0, 10000, $salePrice);

@@ -93,7 +93,7 @@ class PointOfSaleEdit extends Component<Props, State> {
         this.getExchangeRate();
     }
     getExchangeRate = (): void => {
-        httpService.get(`https://the-bruvs.net/api/v1/exchange-rate`)
+        httpService.get(`https://the-bruvs.wmktech.net/api/v1/exchange-rate`)
             .then((response: any) => {
                 console.log(response.data.data);
                 this.setState({ exchangeRate: response.data.data });
@@ -155,7 +155,7 @@ class PointOfSaleEdit extends Component<Props, State> {
         return (Math.random() + 1).toString(36).substring(2);
     }
     getCategories = (): void => {
-        httpService.get(`https://the-bruvs.net/api/v1/pos/categories/items?access_token=$2a$12$ouKUJlDrvBJDYAmUgpxFK.JcyXLj4Tq9Y1xPtX.nOm.I./Xyt.aOq`)
+        httpService.get(`https://the-bruvs.wmktech.net/api/v1/pos/categories/items?access_token=$2a$12$ouKUJlDrvBJDYAmUgpxFK.JcyXLj4Tq9Y1xPtX.nOm.I./Xyt.aOq`)
             .then((response: any) => {
                 this.setState({ categories: response.data.data }, () => {
                     this.setupForEditing().then(() => {
