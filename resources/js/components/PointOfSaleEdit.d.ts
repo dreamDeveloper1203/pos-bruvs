@@ -7,10 +7,12 @@ import { ITable } from "../interfaces/table.interface";
 interface ICartItem extends IProduct {
     quantity: number;
 }
-type Props = {
+declare type Props = {
     order: string;
 };
-type State = {
+declare type State = {
+    eat: string | null;
+    paid: string | null;
     orderId: string;
     orderNumber: string;
     categories: ICategory[];
@@ -48,6 +50,8 @@ declare class PointOfSaleEdit extends Component<Props, State> {
     getCategories: () => void;
     getTables: () => void;
     handleTableClick: (table: ITable) => void;
+    handleEatClick: (eat: string) => void;
+    handlePaidClick: (paid: string) => void;
     handleDeselectClick: () => void;
     updateOrder: () => void;
     categoryClick: (category: ICategory) => void;

@@ -12,14 +12,16 @@ use Illuminate\View\View;
 
 class SettingsController extends Controller
 {
-    public function show(): View
+    public function show()
     {
+        
         $settings = Settings::all()->keyBy('id');
         return view('settings.show', [
             'taxRate' => $settings[Settings::DEFAULT_TAX_RATE]->value,
             'deliveryCharge' => $settings[Settings::DEFAULT_DELIVERY_CHARGE]->value,
             'discount' => $settings[Settings::DEFAULT_DISCOUNT]->value,
             // 'sendEmail' => $settings[Settings::SEND_EMAIL]->value,
+            'deleted_order' => $settings[Settings::DELETED_ORDER]->value,
         ]);
     }
 
@@ -37,6 +39,7 @@ class SettingsController extends Controller
         Settings::updateDefaultDeliveryCharge($request->delivery_charge);
         Settings::updateDefaultDiscount($request->discount);
         // Settings::updateDefaultEmailPreference($request->send_email);
+        Settings::updateDefaultDeletedOrder($request->deleted_order);
 
         return Redirect::back()->with("success", Lang::get("messages.settings_update"));
     }

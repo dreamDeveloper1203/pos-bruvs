@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Settings;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public $data;
+
     /**
      * Show home page.
      * 
@@ -14,6 +17,9 @@ class HomeController extends Controller
      */
     public function show(): View
     {
-        return view("home.show");
+        $setting = Settings::find(6);
+        $this->data['deleted_order'] = $setting->value;
+
+        return view("home.show", $this->data);
     }
 }

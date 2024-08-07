@@ -23,6 +23,8 @@ type Props = {
 };
 
 type State = {
+    eat: string | null,
+    paid: string | null,
     categories: ICategory[],
     products: IProduct[],
     customers: ICustomer[],
@@ -58,6 +60,8 @@ class PointOfSale extends Component<Props, State> {
         super(props);
 
         this.state = {
+            paid: null,
+            eat: null,
             categories: [],
             products: [],
             cart: [],
@@ -119,6 +123,12 @@ class PointOfSale extends Component<Props, State> {
     handleTableClick = (table: ITable): void => {
         this.setState({ table: table });
     }
+    handleEatClick = (eat:string): void => {
+        this.setState({ eat:eat });
+    }
+    handlePaidClick = (paid:string): void => {
+        this.setState({ paid:paid });
+    }
     handleDeselectClick = (): void => {
         this.setState({ table: undefined });
     }
@@ -131,6 +141,8 @@ class PointOfSale extends Component<Props, State> {
         }
         this.setState({ isLoading: true });
         httpService.post(`/order`, {
+            eat_status: this.state.eat,
+            paid_status: this.state.paid,
             customer: this.state.customer,
             table: this.state.table,
             cart: this.state.cart,
@@ -168,6 +180,8 @@ class PointOfSale extends Component<Props, State> {
     }
     
     resetPos = (): void => {
+        this.setState({ eat: null });
+        this.setState({ paid: null });
         this.setState({ products: [] });
         this.setState({ cart: [] });
         this.setState({ customers: [] });
@@ -592,6 +606,42 @@ class PointOfSale extends Component<Props, State> {
                             </ul>
                         </div>
                     }
+                    <div className="dropdown">
+                            <button className="btn btn-light me-2 bg-white h-100 border dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i className="bi bi-house me-1"></i>
+                                {this.state.eat ? this.state.eat : "Choose Eat"}
+                            </button>
+                            <ul className="dropdown-menu scrollable-dropdown w-100 p-0" aria-labelledby="dropdownMenuButton2">
+                                <li>
+                                    <div className="dropdown-item cursor-pointer py-2 text-wrap" onClick={() => this.handleEatClick('Eat In')}>
+                                        Eat In
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="dropdown-item cursor-pointer py-2 text-wrap" onClick={() => this.handleEatClick('Eat Out')}>
+                                        Eat Out
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    <div className="dropdown">
+                            <button className="btn btn-light me-2 bg-white h-100 border dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i className="bi bi-currency-dollar me-1"></i>
+                                {this.state.paid ? this.state.paid : "Choose Paid"}
+                            </button>
+                            <ul className="dropdown-menu scrollable-dropdown w-100 p-0" aria-labelledby="dropdownMenuButton2">
+                                <li>
+                                    <div className="dropdown-item cursor-pointer py-2 text-wrap" onClick={() => this.handlePaidClick('PAID')}>
+                                        PAID
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="dropdown-item cursor-pointer py-2 text-wrap" onClick={() => this.handlePaidClick('UNPAID')}>
+                                        UNPAID
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
                     {/* <button className="btn btn-primary ms-auto  border" onClick={(event) => this.toggleFullScreen()}>
                         {this.state.isFullScreen ?
                             <i className="bi bi-fullscreen-exit fs-5 align-middle"></i>
@@ -680,6 +730,7 @@ class PointOfSale extends Component<Props, State> {
                                 </table>
 
                             </div>
+                            <div className="text-center mb-2">{this.state.paid}</div>
                             <div className=" card-footer p-0 bg-white" id="orderDetails">
                                 <table className="table table-bordered mb-0">
                                     <tbody>

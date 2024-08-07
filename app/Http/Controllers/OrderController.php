@@ -80,12 +80,80 @@ class OrderController extends Controller
         ]);
     }
 
+    public function deleted(Request $request): View
+    {
+        $orders = Order::with('customer', 'order_details')
+            ->onlyTrashed()->search(trim($request->search_query))->latest()->paginate(10);
+
+        $totalCost = OrderDetail::onlyTrashed()->sum('total_cost');
+        $totalSold = OrderDetail::onlyTrashed()->sum('total');
+        $totalProfile = $totalSold - $totalCost;
+
+        $todayQuery = OrderDetail::onlyTrashed()->whereDate('created_at', Carbon::today());
+        $totalOrdersToday = Order::onlyTrashed()->whereDate('created_at', Carbon::today())->count();
+        $totalCostToday = $todayQuery->sum('total_cost');
+        $totalSoldToday = $todayQuery->sum('total');
+        $totalProfileToday = $totalSoldToday - $totalCostToday;
+
+
+        $thisMonthQuery = OrderDetail::onlyTrashed()->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'));
+        $totalOrdersThisMonth =  Order::onlyTrashed()->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count();
+
+
+        $totalCostThisMonth = $thisMonthQuery->sum('total_cost');
+        $totalSoldThisMonth = $thisMonthQuery->sum('total');
+        $totalProfileThisMonth = $totalSoldThisMonth - $totalCostThisMonth;
+
+        $thisYearQuery = OrderDetail::onlyTrashed()->whereYear('created_at', date('Y'));
+        $totalOrdersThisYear =  Order::onlyTrashed()->whereYear('created_at', date('Y'))->count();
+
+
+        $totalCostThisYear = $thisYearQuery->sum('total_cost');
+        $totalSoldThisYear = $thisYearQuery->sum('total');
+        $totalProfileThisYear = $totalSoldThisYear - $totalCostThisYear;
+
+        return view('orders.deleted', [
+            'password' => Settings::routePassword(), //Hash::make(Settings::routePassword()),
+
+            'orders' => $orders,
+
+            'totalOrders' => $orders->total(),
+            'totalCost' => currency_format($totalCost),
+            'totalSold' => currency_format($totalSold),
+            'totalProfile' => currency_format($totalProfile),
+
+            'totalOrdersToday' => $totalOrdersToday,
+            'totalCostToday' => currency_format($totalCostToday),
+            'totalSoldToday' => currency_format($totalSoldToday),
+            'totalProfileToday' => currency_format($totalProfileToday),
+
+
+            'totalOrdersThisMonth' => $totalOrdersThisMonth,
+            'totalCostThisMonth' => currency_format($totalCostThisMonth),
+            'totalSoldThisMonth' => currency_format($totalSoldThisMonth),
+            'totalProfileThisMonth' => currency_format($totalProfileThisMonth),
+
+            'totalOrdersThisYear' => $totalOrdersThisYear,
+            'totalCostThisYear' => currency_format($totalCostThisYear),
+            'totalSoldThisYear' => currency_format($totalSoldThisYear),
+            'totalProfileThisYear' => currency_format($totalProfileThisYear),
+        ]);
+    }
 
     public function show(string $id): View
     {
-        $order = Order::with('customer', 'order_details')->findOrFail($id);
+        $order = Order::withTrashed()->with('customer', 'order_details')->findOrFail($id);
 
         return view('orders.show', [
+            'order' => $order
+        ]);
+    }
+
+    public function deletedShow(string $id): View
+    {
+        $order = Order::withTrashed()->with('customer', 'order_details')->findOrFail($id);
+
+        return view('orders.deleted_show', [
             'order' => $order
         ]);
     }
@@ -200,6 +268,10 @@ class OrderController extends Controller
             $order->table_name = null;
             $order->table_status = null;
         }
+
+        $order->eat_status = $request->eat_status;
+        $order->paid_status = $request->paid_status;
+
         $order->save();
         $order->order_details()->delete();
 
@@ -294,6 +366,9 @@ class OrderController extends Controller
             $order->table_status = "pending";
         }
         $order->user_id = $request->user()->id;
+
+        $order->eat_status = $request->eat_status;
+        $order->paid_status = $request->paid_status;
 
         $order->save();
 

@@ -3,8 +3,8 @@
 
 @section('content')
     <div class="mb-3">
-        <a href="{{ route('orders.index') }}" class="link-primary text-decoration-none">
-            <i class="bi bi-arrow-left me-2"></i> Back to Order list
+        <a href="{{ route('orders.deleted') }}" class="link-primary text-decoration-none">
+            <i class="bi bi-arrow-left me-2"></i> Back to Deleted Order list
         </a>
     </div>
     <div class="d-flex mb-3">
@@ -18,14 +18,6 @@
             <div class="mb-1">
                 {{ $order->date_view }} {{ $order->time_view }} ({{ $order->eat_status}} / {{ $order->paid_status}})
             </div>
-        </div>
-        <div class="ms-auto">
-            <a class="btn btn-primary" href=" {{ route('orders.edit', $order) }}">
-                <i class="bi bi-pencil-square me-2"></i> Edit
-            </a>
-            <a class="btn btn-primary" target="_blank" href=" {{ route('orders.print', $order) }}">
-                <i class="bi bi-printer me-2"></i> Print Receipt
-            </a>
         </div>
     </div>
     @if ($order->remarks)

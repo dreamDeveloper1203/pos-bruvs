@@ -68,6 +68,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['password.confirm']], function () {
         Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
         Route::get('/orders/analytics', [\App\Http\Controllers\OrderController::class, 'showAnalytics'])->name('orders.analytics');
+        Route::get('/orders/deleted', [\App\Http\Controllers\OrderController::class, 'deleted'])->name('orders.deleted');
+        Route::get('/orders/deleted/{order}', [\App\Http\Controllers\OrderController::class, 'deletedShow'])->name('orders.show.deleted');
     });
 
     Route::get('/orders/filter', [\App\Http\Controllers\OrderController::class, 'filter'])->name('orders.filter');

@@ -49,7 +49,7 @@
                         {{ $order->profit_view }}
                     </td>
                     <td class="align-middle">
-                        {{ $order->delivery_charge_view }}
+                        {{ $order->delivery_charge_view }} <span class="badge {{$order->eat_status == 'Eat In' ? 'bg-secondary':'bg-primary'}} rounded-pill">{{$order->eat_status}}</span>
                     </td>
                     <td class="align-middle">
                         {{ $order->subtotal_view }}
@@ -58,7 +58,7 @@
                         {{ $order->total_view }}
                     </td>
                     <td class="align-middle">
-                        {{ $order->tender_amount_view }}
+                        {{ $order->tender_amount_view }} <span class="badge {{$order->paid_status == 'PAID' ? 'bg-success':'bg-danger'}} rounded-pill">{{$order->paid_status}}</span>
                     </td>
                     <td class="align-middle">
                         {{ $order->change_view }}

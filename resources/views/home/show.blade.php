@@ -22,6 +22,17 @@
                 </div>
             </div>
         </div>
+        @if ($deleted_order == 1)
+        <div class="col-md-4 mb-3 d-flex align-items-stretch">
+            <div class="card w-100 clicable-cell">
+                <div class="card-body text-center">
+                    <img src="{{ asset('images/webp/trash.webp') }}" height="100" class="mb-3" alt="trash">
+                    <h3>Deleted Orders</h3>
+                    <a href="{{ route('orders.deleted') }}" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+        @endif
         <div class="col-md-4 mb-3 d-flex align-items-stretch">
             <div class="card w-100 clicable-cell">
                 <div class="card-body text-center">

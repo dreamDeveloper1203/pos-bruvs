@@ -94,6 +94,16 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label for="deleted_order" class="form-label">Show Deleted Order</label>
+                    <input type="number" name="deleted_order" class="form-control @error('deleted_order') is-invalid @enderror"
+                        id="deleted_order" value="{{ old('deleted_order', $deleted_order) }}">
+                    @error('deleted_order')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
 
                 {{-- <div class="mb-3">
                     <label for="send_email" class="form-label">Send customers an email receipt after checkout</label>

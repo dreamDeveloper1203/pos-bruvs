@@ -26,6 +26,7 @@ class Settings extends Model
     const DEFAULT_DISCOUNT = 3;
     const SEND_EMAIL = 4;
     const ROUTE_PASSWORD = 5;
+    const DELETED_ORDER = 6;
 
 
     public static $settingsNames = [
@@ -34,12 +35,14 @@ class Settings extends Model
         self::DEFAULT_DISCOUNT => "Default Discount",
         self::SEND_EMAIL => "Send Email",
         self::ROUTE_PASSWORD => "Send Email",
+        self::DELETED_ORDER => "Deleted Order",
     ];
     public static $settingsValues = [
         self::DEFAULT_TAX_RATE => 0,
         self::DEFAULT_DELIVERY_CHARGE => 0,
         self::DEFAULT_DISCOUNT => 0,
         self::SEND_EMAIL => false,
+        self::DELETED_ORDER => 1,
         self::ROUTE_PASSWORD => "5556", //should hash
     ];
 
@@ -92,6 +95,11 @@ class Settings extends Model
         return Settings::find(self::DEFAULT_DISCOUNT);
     }
 
+    public static function getDefaultDeletedOrder()
+    {
+        return Settings::find(self::DELETED_ORDER);
+    }
+
     public static function defaultDiscountValue(): float
     {
         return self::getDefaultDiscount()->value;
@@ -100,6 +108,11 @@ class Settings extends Model
     public static function updateDefaultDiscount(float $value): void
     {
         self::getDefaultDiscount()->update(['value' => $value]);
+    }
+
+    public static function updateDefaultDeletedOrder(int $value): void
+    {
+        self::getDefaultDeletedOrder()->update(['value' => $value]);
     }
 
     /**
